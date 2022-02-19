@@ -1,40 +1,36 @@
 <div class="container-md">
-            <div class="card mt-2">
-                <div class="card-body">
-                   <h3>Post title</h3> 
-                    <div class="">
-                        <div class="">username</div>
-                        <div class="">date</div>
-                    </div>
-                    <div class="post-body">
-                        Post body
-                    </div>
-                    <button class="comment-btn">
-                       Comment
-                    </div>
+    <div class="card mt-2">
+        <div class="card-body">
+            <h3>{{post.title}}</h3>
+            <div class="">
+                <div class="">{{post.User.firstname}}
+                    {{post.User.lastname}}
                 </div>
-            </div>
 
-            <form action="" class="comment-form" id="comment-form">
-                <textarea name="comment-input" id="comment-input" cols="30" rows="10">
+                <div class="">{{created}}</div>
+            </div>
+            <div class="post-body">
+                {{post.content}}
+            </div>
+            <button class="comment-btn">
+                Comment
+        </div>
+    </div>
+</div>
+
+<form action="" class="comment-form" id="comment-form">
+    <textarea name="comment-input" id="comment-input" cols="30" rows="10">
 
                 </textarea>
-                     <button class="submit-btn">
-                      Submit
-                     </button>
-            </form>
+    <button class="submit-btn">
+        Submit
+    </button>
+</form>
 
-            <ul class="post-list">
-                <li class="mt-2">
-                    <div class="card">
-                        <div class="card-body">
-                            Comment
-                            <div class="">
-                                <div class="">username</div>
-                                <div class="">date</div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+<ul class="post-list no-bullets">
+    {{#each post.Comments as |comment| }}
+    {{>comments}}
+    {{/each}}
+
+</ul>
 </div>
