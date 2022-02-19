@@ -2,6 +2,8 @@ const express = require('express');
 const {engine} = require('express-handlebars');
 const path = require ("path");
 const db = require('./models')
+const routes = require('./controller');
+
 
 const app = express();
 
@@ -22,11 +24,8 @@ app.engine('.hbs', engine({extname:'.hbs'}));
 app.set('view engine', '.hbs');
 
 
-// Creates routes
-const htmlRouter = require('./controller/html')
 
-
-app.use("/", htmlRouter);
+app.use(routes);
 
 
 

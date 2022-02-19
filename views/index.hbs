@@ -1,26 +1,23 @@
 <div class="container-md">
     <ul>
+        {{#each posts as | post | }}
+
+
+
         <li class="mt-2">
             <div class="card">
                 <div class="card-body">
-                    Post title
+                    {{title}}
                     <div class="">
-                        <div class="">username</div>
-                        <div class="">date</div>
+                        <div class="">{{post.User.firstname}}
+                            {{post.User.lastname}}
+                        </div>
+
+                        <div class="">{{created}}</div>
                     </div>
                 </div>
             </div>
         </li>
-        <li class="mt-2">
-            <div class="card">
-                <div class="card-body">
-                    Post title
-                    <div class="">
-                        <div class="">username</div>
-                        <div class="">date</div>
-                    </div>
-                </div>
-            </div>
-        </li>
+        {{/each}}
     </ul>
 </div>
