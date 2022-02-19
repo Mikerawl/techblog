@@ -8,8 +8,8 @@ console.log("seeds")
 const seedAll = async () => {
     await sequelize.sync({ force: true });
 
-    await seedPost();
     await seedUser();
+     await seedPost();
     await seedComment();
 
     process.exit(0);

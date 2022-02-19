@@ -23,7 +23,7 @@ app.set('view engine', '.hbs');
 
 
 // Creates routes
-const htmlRouter = require('./routes/html')
+const htmlRouter = require('./controller/html')
 
 
 app.use("/", htmlRouter);
