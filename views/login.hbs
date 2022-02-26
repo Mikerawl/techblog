@@ -1,11 +1,12 @@
-
-    
 <div class="container-md">
-    <form action="">
-         <label for="username-login">Username:</label>
-        <input type="text" name="user" id="username"/>
-         <label for="username-login">Password:</label>
-        <input type="text" name="password" id="password"/>
+    <form action="/auth/login" method="post">
+        <label for="email-login">Email:</label>
+        <input type="email" name="email" id="email" />
+
+        <label for="password-login">Password:</label>
+        <input type="text" name="password" id="password" />
+
         <button type="submit">Submit</button>
     </form>
+    <a href="/auth/signup">Sign Up</a>
 </div>

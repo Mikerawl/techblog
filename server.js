@@ -3,7 +3,8 @@ const {engine} = require('express-handlebars');
 const path = require ("path");
 const db = require('./models')
 const routes = require('./controller');
-
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 
@@ -13,6 +14,19 @@ app.use(express.static("public"));
 const PORT = process.env.PORT || 3001;
 
 const sequelize = require('./config/connection');
+
+const sess = {
+  secret:'secret_password', 
+  saveUninitialized: true,
+  cookie: {maxAge: 86400},
+  resave: false,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+  
+}
+
+app.use(session(sess));
 
 // Allows express to get data from DOM
 app.use(express.json());
@@ -26,7 +40,6 @@ app.set('view engine', '.hbs');
 
 
 app.use(routes);
-
 
 
 // Start the server on the port
