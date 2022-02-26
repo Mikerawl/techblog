@@ -5,8 +5,6 @@ const { Post, User, Comment } = require('../../models');
 
 const saltRounds = 14;
 
-
-
 router.post('/login', async (req, res) => {
 
   try {
