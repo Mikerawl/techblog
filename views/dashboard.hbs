@@ -1,29 +1,48 @@
-<h3>Name's Posts</h3>
+
+<div class="container-md d-flex justify-content-center">
+    <div class="row col-md-8">
+
+     <h3>Welcome {{user.firstname}}</h3>
+
+    <button>Make a new post</button>
 
 
-<div class="container-md">
-    <ul class="comment-history">
-        <li class="mt-2">
+
+<form action="api/post/dashboard" class="form-group" method="post">
+    <label for="post-title" class="form-label">Title</label>
+    <input type="text" name="title" class="form-control" id="post-title">
+
+    <textarea name="content" id="post-content"class="form-control" ></textarea>
+
+    <button type="submit">Submit</button>
+</form>
+
+
+     <p>Your posting history</p>
+
+    <ul class="comment-history no-bullets">
+        {{#each posts as |post| }}
+         <li class="mt-2">
             <div class="card">
                 <div class="card-body">
-                    Post title
+                 <h2>{{post.title}}</h2>  
+                 <p>{{post.content}}</p> 
                     <div class="">
-                        <div class="">username</div>
-                        <div class="">date</div>
+                        <div class="">{{post.created}}</div>
                     </div>
-                </div>
+
+
+                    <form action="api/post/delete/{{post.id}}" method="post" class="form-group">
+                                    <input type="hidden" name="_method" value="delete">
+                   
+                        <button type="submit">Delete</button>
+                        
+                    </form>
+                    <a href="/edit/{{post.id}}"> <button>Edit</button></a>
             </div>
+            
         </li>
-        <li class="mt-2">
-            <div class="card">
-                <div class="card-body">
-                    Post title
-                    <div class="">
-                        <div class="">username</div>
-                        <div class="">date</div>
-                    </div>
-                </div>
-            </div>
-        </li>
+         {{/each}}
     </ul>
+    </div>
 </div>

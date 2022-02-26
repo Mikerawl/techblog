@@ -1,36 +1,65 @@
 <div class="container-md">
-    <div class="card mt-2">
-        <div class="card-body">
-            <h3>{{post.title}}</h3>
-            <div class="">
-                <div class="">{{post.User.firstname}}
-                    {{post.User.lastname}}
-                </div>
 
-                <div class="">{{created}}</div>
+    <div class="row col-md-8">
+
+           
+            <div class="card mt-2">
+                <div class="card-body">
+
+                   <h3>{{post.title}}</h3> 
+                  
+                    <div class="">
+                        <div class="">{{post.User.firstname}} {{post.User.lastname}}</div>
+                        <div class="">{{post.created}}</div>
+                    </div>
+
+                    <div class="post-body">
+                        {{post.content}}
+                    </div>
+                    
+                    
+                        {{#if logged_in}}
+                            <button id="comment-btn">
+                                Comment
+                            </button>
+                        
+                        {{else}}
+                        
+                        {{/if}}
+                    
+                </div>
             </div>
-            <div class="post-body">
-                {{post.content}}
+
+            <div class="row col-md-8 mt-2r">
+            
+                <form action="/api/post/comment" class="comment-form form-group" id="comment-form" method="post" style="display:none">
+                
+                    <input type="hidden" name="post_id" id="post-id" value="{{post.id}}">
+                    
+                    <textarea name="comment" id="comment" rows="10" cols="200" class="comment-text ">
+
+                    </textarea>
+
+                    <button id='submit-btn' class="submit-btn mt-2">
+                    Submit
+                    </button>
+                    
+                </form>
+
             </div>
-            <button class="comment-btn">
-                Comment
-        </div>
+
+
+<h4 class="mt-4">Comments</h4>
+            <ul class="post-list">
+               
+
+                  {{#each post.Comments as |comment| }}
+                        {{> comments}}
+                    {{/each}}
+                    
+                
+            </ul>
     </div>
 </div>
 
-<form action="" class="comment-form" id="comment-form">
-    <textarea name="comment-input" id="comment-input" cols="30" rows="10">
-
-                </textarea>
-    <button class="submit-btn">
-        Submit
-    </button>
-</form>
-
-<ul class="post-list no-bullets">
-    {{#each post.Comments as |comment| }}
-    {{>comments}}
-    {{/each}}
-
-</ul>
-</div>
+ <script src="/js/comment.js"></script>

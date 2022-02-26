@@ -1,17 +1,14 @@
-<div class="container-md">
+<div class="container-md d-flex justify-content-center">
+    <div class="row col-md-8">
     <ul class="no-bullets">
-        {{#each posts as | post | }}
-
+        {{#each posts as |post| }}
         <li class="mt-2">
-            <a class="list-item" href="/{{id}}">
+            <a href="/{{id}}" class="list-item">
             <div class="card">
                 <div class="card-body">
-                    {{title}}
+                  <h3>{{title}}</h3>
                     <div class="">
-                        <div class="">{{post.User.firstname}}
-                            {{post.User.lastname}}
-                        </div>
-
+                        <div class="">{{post.User.firstname}} {{post.User.lastname}}</div>
                         <div class="">{{created}}</div>
                     </div>
                 </div>
@@ -19,5 +16,7 @@
             </a>
         </li>
         {{/each}}
+        
     </ul>
+    </div>  
 </div>

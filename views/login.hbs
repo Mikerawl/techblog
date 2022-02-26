@@ -1,12 +1,16 @@
-<div class="container-md">
-    <form action="/auth/login" method="post">
-        <label for="email-login">Email:</label>
-        <input type="email" name="email" id="email" />
 
-        <label for="password-login">Password:</label>
-        <input type="text" name="password" id="password" />
-
+    
+<div class="container-md d-flex justify-content-center">
+    <div class="row col-md-4" >
+    <form action="/api/user/login" class="form-group" method="post">
+         <label for="email-login" class="form-label">Email:</label>
+        <input type="text" name="email" id="email" class="form-control"/>
+         <label for="username-login" class="form-label">Password:</label>
+        <input type="text" name="password" id="password" class="form-control"/>
         <button type="submit">Submit</button>
     </form>
-    <a href="/auth/signup">Sign Up</a>
+   <a href="/auth/register"> <p>Register</p></a>
+    </div>
 </div>
+
+
